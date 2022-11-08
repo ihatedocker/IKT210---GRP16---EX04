@@ -1,0 +1,5 @@
+kube/
+  -dev/
+    -apache1.yaml
+  -prod/
+    -apache2.yaml
