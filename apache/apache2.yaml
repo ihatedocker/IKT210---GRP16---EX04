@@ -9,8 +9,8 @@ data:
     Listen 80
     <VirtualHost *:80>
         ProxyPreserveHost On
-        ProxyPass / http://10.103.173.55:8080/
-        ProxyPassReverse / http://10.103.173.55:8080/
+        ProxyPass / http://localhost:8080/
+        ProxyPassReverse / http://localhost:8080/
     </VirtualHost>
     LoadModule mpm_event_module modules/mod_mpm_event.so
     LoadModule authz_core_module modules/mod_authz_core.so
