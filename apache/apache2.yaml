@@ -1,3 +1,23 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: apache-conf
+  namespace: apache
+data:
+  httpd.conf: |
+    ServerRoot "/usr/local/apache2"
+    Listen 80
+    <VirtualHost *:80>
+        ProxyPreserveHost On
+        ProxyPass / http://10.103.173.55:8080/
+        ProxyPassReverse / http://10.103.173.55:8080/
+    </VirtualHost>
+    LoadModule mpm_event_module modules/mod_mpm_event.so
+    LoadModule authz_core_module modules/mod_authz_core.so
+    LoadModule proxy_module modules/mod_proxy.so
+    LoadModule proxy_http_module modules/mod_proxy_http.so
+    LoadModule unixd_module modules/mod_unixd.so
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
