@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: apache
-  namespace: apache
+  namespace: apache1
 spec:
   selector:
     matchLabels:
@@ -35,7 +35,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: apache
-  namespace: apache
+  namespace: apache1
   labels:
     app: apache
 spec:
