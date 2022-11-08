@@ -9,8 +9,8 @@ data:
     Listen 80
     <VirtualHost *:80>
         ProxyPreserveHost On
-        ProxyPass / http://localhost:8080/
-        ProxyPassReverse / http://localhost:8080/
+        ProxyPass / http://172.16.74.229:8080/
+        ProxyPassReverse / http://172.16.74.229:8080/
     </VirtualHost>
     LoadModule mpm_event_module modules/mod_mpm_event.so
     LoadModule authz_core_module modules/mod_authz_core.so
@@ -60,6 +60,7 @@ metadata:
     app: apache
 spec:
   type: NodePort
+  clusterIP: 172.16.74.229
   ports:
   - port: 80
     targetPort: 80
