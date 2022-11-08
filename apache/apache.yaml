@@ -1,68 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: beetroot-deployment
-  namespace: apache
-  labels:
-    app: beetroot
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: beetroot
-  template:
-    metadata:
-      labels:
-        app: beetroot
-    spec:
-      containers:
-      - name: beetroot
-        image: okayipullup/letsgo:latest
-        ports:
-        - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: beetmanifest
-  namespace: apache
-spec:
-  type: ClusterIP
-  clusterIP: 10.103.173.55
-  selector:
-    app: beetroot
-  ports:
-      # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
-    - name: http
-      port: 8080
-      targetPort: 8080
-      protocol: TCP
-      # Optional field
-      # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
----
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: apache-conf
-  namespace: apache
-data:
-  httpd.conf: |
-    ServerRoot "/usr/local/apache2"
-    Listen 80
-    <VirtualHost *:80>
-        ProxyPreserveHost On
-        ProxyPass / http://10.103.173.55:8080/
-        ProxyPassReverse / http://10.103.173.55:8080/
-    </VirtualHost>
-    LoadModule mpm_event_module modules/mod_mpm_event.so
-    LoadModule authz_core_module modules/mod_authz_core.so
-    LoadModule proxy_module modules/mod_proxy.so
-    LoadModule proxy_http_module modules/mod_proxy_http.so
-    LoadModule unixd_module modules/mod_unixd.so
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: apache
   namespace: apache
 spec:
