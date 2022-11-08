@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: apache
+  name: apache1
   namespace: apache1
 spec:
   selector:
     matchLabels:
-      app: apache
+      app: apache1
   replicas: 1
   template:
     metadata:
       labels:
-        app: apache
+        app: apache1
     spec:
       containers:
-      - name: apache
+      - name: apache1
         image: httpd:latest
         ports:
         - containerPort: 80
@@ -34,10 +34,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: apache
+  name: apache1
   namespace: apache1
   labels:
-    app: apache
+    app: apache1
 spec:
   type: NodePort
   ports:
@@ -45,4 +45,4 @@ spec:
     targetPort: 80
     nodePort: 30055
   selector:
-    app: apache
+    app: apache1
