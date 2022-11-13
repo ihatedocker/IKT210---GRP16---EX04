@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
    name: beetroot-pod
+   namespace: beetroot
    labels:
      app: beetman
 spec:
