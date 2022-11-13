@@ -1,6 +1,0 @@
-resources:
-- beetapdeploy.yaml
-- beetapacheservice.yaml
-- apacheconfigmapbeet.yaml
-- apachedeployment2.yaml
-- apacheservice2.yaml
