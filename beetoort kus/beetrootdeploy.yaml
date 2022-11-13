@@ -12,3 +12,4 @@ spec:
      ports:
      - containerPort: 8080
        name: http-web-svc
+#dette er bare for å sjekke om den syncer
