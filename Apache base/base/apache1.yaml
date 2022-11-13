@@ -7,7 +7,7 @@ data:
   index.html: |
     <html>
     <body>
-    <h1> Dette er prod aapache greia ok ok ok ok </h1>
+    <h1> Dette er pen test for å se om argocd syncer rikti</h1>
     </body>
     </html>   
 ---
